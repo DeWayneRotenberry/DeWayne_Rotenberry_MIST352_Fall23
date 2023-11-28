@@ -19,15 +19,20 @@ public class Employee {
      * @param line
      */
     public Employee(String line) {
-        String[] data = line.split(",");
-        this.name = data[0];
-        this.dateOfBirth = data[1];
-        this.role = data[2];
-        this.employeeId = Integer.parseInt(data[3]);
-        this.email = data[4];
-        this.salary = Double.parseDouble(data[5]);
-        this.aboveAvg = false; // Set initially to false
-        this.bar = SalaryBarChart(salary); // Initialize bar chart
+        // Split the line into individual attributes
+        String[] parts = line.split(",");
+
+        // Assuming order in the line is: name, dateOfBirth, role, employeeId, email, salary
+        this.name = parts[0].trim();
+        this.dateOfBirth = parts[1].trim();
+        this.role = parts[2].trim();
+        this.employeeId = Integer.parseInt(parts[3].trim());
+        this.email = parts[4].trim();
+        this.salary = Double.parseDouble(parts[5].trim());
+        this.aboveAvg = false; // Default value
+
+        // Call the method to set aboveAvg based on salary
+        setAboveAvg(salary);
     }
 
     /**
