@@ -22,7 +22,6 @@ public class Employee {
         // Split the line into individual attributes
         String[] parts = line.split(",");
 
-        // Assuming order in the line is: name, dateOfBirth, role, employeeId, email, salary
         this.name = parts[0].trim();
         this.dateOfBirth = parts[1].trim();
         this.role = parts[2].trim();
