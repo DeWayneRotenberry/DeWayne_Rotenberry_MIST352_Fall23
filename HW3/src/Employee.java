@@ -29,7 +29,7 @@ public class Employee {
         this.email = parts[4].trim();
         this.salary = Double.parseDouble(parts[5].trim());
         this.aboveAvg = false; // Default value
-
+        this.bar = SalaryBarChart(salary);// Initialize the salary bar chart
         // Call the method to set aboveAvg based on salary
         setAboveAvg(salary);
     }

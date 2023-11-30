@@ -71,13 +71,22 @@ public class DataSummary {
 	public void ViewEmployeeAndIDs() throws FileNotFoundException
 	{
 		File data = new File(fileLocation);
-		Scanner scnReader = new Scanner(data);
-		while(scnReader.hasNext()) {
-			String strLine = scnReader.nextLine();
-			System.out.println(strLine.split(",")[1]);
-		}
-		scnReader.close();
-	}
+        Scanner scnReader = new Scanner(data);
+
+        while (scnReader.hasNext()) {
+            String strLine = scnReader.nextLine();
+            String[] employeeData = strLine.split(",");
+
+            // Assuming name is the first element in the array (index 0) and ID is the fourth element (index 3)
+            String name = employeeData[0].trim();
+            int id = Integer.parseInt(employeeData[3].trim());
+
+            System.out.println("Name: " + name + ". ID: " + id);
+        }
+
+        scnReader.close();
+    }
+
 	
 	
 	/**
