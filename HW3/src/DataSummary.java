@@ -40,7 +40,26 @@ public class DataSummary {
 	 */
 	public double getAverage() throws FileNotFoundException
 	{
-		
+		  File data = new File(fileLocation);
+	        Scanner scnReader = new Scanner(data);
+
+	        double totalSalary = 0;
+	        int employeeCount = 0;
+
+	        while (scnReader.hasNext()) {
+	            String strLine = scnReader.nextLine();
+	            // Assuming salary is the sixth element in the array (index 5)
+	            totalSalary += Double.parseDouble(strLine.split(",")[5]);
+	            employeeCount++;
+	        }
+
+	        scnReader.close();
+
+	        if (employeeCount > 0) {
+	            return totalSalary / employeeCount;
+	        } else {
+	            return 0; // Avoid division by zero
+	        }	
 	}
 	
 
@@ -51,7 +70,13 @@ public class DataSummary {
 	 */
 	public void ViewEmployeeAndIDs() throws FileNotFoundException
 	{
-		
+		File data = new File(fileLocation);
+		Scanner scnReader = new Scanner(data);
+		while(scnReader.hasNext()) {
+			String strLine = scnReader.nextLine();
+			System.out.println(strLine.split(",")[1]);
+		}
+		scnReader.close();
 	}
 	
 	
@@ -62,12 +87,31 @@ public class DataSummary {
 	 * @param strEmployee: Employee name 
 	 * @throws FileNotFoundException: Thrown if file is not found.
 	 */
-	public void SearchEmployee(String strEmployee) throws FileNotFoundException
-	{
-		 
+		public void SearchEmployee(String strEmployee) throws FileNotFoundException 
+		{
+	        File data = new File(fileLocation);
+	        Scanner scnReader = new Scanner(data);
 
-		
-	}
+	        StringBuilder result = new StringBuilder();
+
+	        while (scnReader.hasNext()) {
+	            String strLine = scnReader.nextLine();
+	            String employeeName = strLine.split(",")[0];
+	            
+	            // Check if the employee name contains the search string
+	            if (employeeName.toLowerCase().contains(strEmployee.toLowerCase())) {
+	                result.append(strLine).append("\n");
+	            }
+	        }
+
+	        scnReader.close();
+
+	        if (result.length() > 0) {
+	            JOptionPane.showMessageDialog(null, result.toString());
+	        } else {
+	            JOptionPane.showMessageDialog(null, "Employee not found");
+	        }	 
+		}
 	
 	/**
 	 * You need to code this
@@ -78,7 +122,28 @@ public class DataSummary {
 	 */
 	public void ViewEmployeeForRole(String strRole) throws FileNotFoundException
 	{
-		
+		File data = new File(fileLocation);
+        Scanner scnReader = new Scanner(data);
+
+        StringBuilder result = new StringBuilder();
+
+        while (scnReader.hasNext()) {
+            String strLine = scnReader.nextLine();
+            String employeeRole = strLine.split(",")[2];
+            
+            // Check if the employee role matches the search role
+            if (employeeRole.equalsIgnoreCase(strRole)) {
+                result.append(strLine).append("\n");
+            }
+        }
+
+        scnReader.close();
+
+        if (result.length() > 0) {
+            JOptionPane.showMessageDialog(null, result.toString());
+        } else {
+            JOptionPane.showMessageDialog(null, "Not found");
+        }	
 
 		
 	}
