@@ -37,7 +37,7 @@ public class HW3 {
 	//*************************************
 
 		
-		//used ChatGPT kept getting an error at case 2 and 6 
+		//used ChatGPT kept getting an error at case 2 and 6. 
 		while(intChoice !=0)
 		{
 			switch(intChoice)
