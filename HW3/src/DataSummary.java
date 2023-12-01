@@ -48,7 +48,7 @@ public class DataSummary {
 
 	        while (scnReader.hasNext()) {
 	            String strLine = scnReader.nextLine();
-	            // Assuming salary is the sixth element in the array (index 5)
+	            //  salary is the sixth element in the array (index 5)
 	            totalSalary += Double.parseDouble(strLine.split(",")[5]);
 	            employeeCount++;
 	        }
@@ -70,22 +70,20 @@ public class DataSummary {
 	 */
 	public void ViewEmployeeAndIDs() throws FileNotFoundException
 	{
-		File data = new File(fileLocation);
-        Scanner scnReader = new Scanner(data);
+		 File data = new File(fileLocation);
+		    Scanner scnReader = new Scanner(data);
 
-        while (scnReader.hasNext()) {
-            String strLine = scnReader.nextLine();
-            String[] employeeData = strLine.split(",");
+		    while (scnReader.hasNext()) {
+		        String strLine = scnReader.nextLine();
+		        // Assuming the employee name is the first element and the ID is the fourth element
+		        String employeeName = strLine.split(",")[0];
+		        int employeeID = Integer.parseInt(strLine.split(",")[3]);
 
-            // Assuming name is the first element in the array (index 0) and ID is the fourth element (index 3)
-            String name = employeeData[0].trim();
-            int id = Integer.parseInt(employeeData[3].trim());
+		        System.out.println("Name: " + employeeName + ". ID: " + employeeID);
+		    }
 
-            System.out.println("Name: " + name + ". ID: " + id);
-        }
-
-        scnReader.close();
-    }
+		    scnReader.close();
+	}
 
 	
 	
