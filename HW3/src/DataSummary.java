@@ -7,14 +7,13 @@ import java.util.Set;
 import javax.swing.JOptionPane;
 
 /**
- * 
- */
+ * @author DeWayne Rotenberry
+ * MIST352-001
+ * HW3
+ */ 
 
-/**
- * @author MJ
- *
- */
-public class DataSummary {
+ 
+	public class DataSummary {
 	private String fileLocation;
 	private double averageSalary;
 	
@@ -71,17 +70,16 @@ public class DataSummary {
 	public void ViewEmployeeAndIDs() throws FileNotFoundException
 	{
 		 File data = new File(fileLocation);
-		    Scanner scnReader = new Scanner(data);
+			Scanner scnReader = new Scanner(data);
 
 		    while (scnReader.hasNext()) {
 		        String strLine = scnReader.nextLine();
-		        // Assuming the employee name is the first element and the ID is the fourth element
+		        // employee name is the first element and the ID is the fourth element
 		        String employeeName = strLine.split(",")[0];
-		        int employeeID = Integer.parseInt(strLine.split(",")[5]);
+		        int employeeID = Integer.parseInt(strLine.split(",")[3]);
 
 		        System.out.println("Name: " + employeeName + ". ID: " + employeeID);
 		    }
-
 		    scnReader.close();
 	}
 
@@ -184,5 +182,10 @@ public class DataSummary {
 		        }
 		        JOptionPane.showMessageDialog(null, strRole);
 		    }
+
+	public void DataSummary() {
+		// TODO Auto-generated method stub
+		
+	}
 	
 }

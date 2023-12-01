@@ -3,8 +3,10 @@
  */
 
 /**
- * @author MJ
- *
+ * @author DeWayne Rotenberry
+ * MIST352-001
+ * HW3
+ * used ChatGPT for switch statement due to errors kept getting
  */
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -35,11 +37,36 @@ public class HW3 {
 	//*************************************
 
 		
+		//used ChatGPT kept getting an error at case 2 and 6 
 		while(intChoice !=0)
 		{
 			switch(intChoice)
 			{
-			
+			case 1:
+                myData.ViewEmployeeAndIDs();
+                break;
+            case 2:
+                String searchName = JOptionPane.showInputDialog("Enter employee name:");
+                myData.SearchEmployee(searchName);
+                break;
+            case 3:
+                myData.ViewRoles();
+                break;
+            case 4:
+                String role = JOptionPane.showInputDialog("Enter employee role:");
+                myData.ViewEmployeeForRole(role);
+                break;
+            case 5:
+                double avgSalary = myData.getAverage();
+                JOptionPane.showMessageDialog(null, "Average Salary: $" + avgSalary);
+                break;
+            case 6:
+                // Summarize and Write data
+                myData.DataSummary();
+                break;
+            default:
+                JOptionPane.showMessageDialog(null, "Invalid choice. Please try again.");
+                break;
 			}
 			intChoice  = Integer.parseInt( JOptionPane.showInputDialog(null,  ViewOptions()));	
 		}

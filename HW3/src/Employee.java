@@ -1,3 +1,9 @@
+/**
+ * @author DeWayne Rotenberry
+ * MIST352-001
+ * HW3
+ */
+
 import java.util.Date;
 
 public class Employee {
@@ -51,7 +57,7 @@ public class Employee {
      * @param salary: the employee salary
      * @return bar: representation in stars of the salary. Each * represents $10,000
      */
-    public String SalaryBarChart(double salary) {
+    public static String SalaryBarChart(double salary) {
         int stars = (int) (salary / 10000);
         StringBuilder bar = new StringBuilder();
         for (int i = 0; i < stars; i++) {
