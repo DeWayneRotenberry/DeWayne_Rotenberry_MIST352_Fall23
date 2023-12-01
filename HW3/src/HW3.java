@@ -67,4 +67,3 @@ public class HW3 {
 				+ "\n6.\tSummerize and Write data";
 		return strMessageToDisplay;
 	} }
-	

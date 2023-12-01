@@ -77,7 +77,7 @@ public class DataSummary {
 		        String strLine = scnReader.nextLine();
 		        // Assuming the employee name is the first element and the ID is the fourth element
 		        String employeeName = strLine.split(",")[0];
-		        int employeeID = Integer.parseInt(strLine.split(",")[3]);
+		        int employeeID = Integer.parseInt(strLine.split(",")[5]);
 
 		        System.out.println("Name: " + employeeName + ". ID: " + employeeID);
 		    }
