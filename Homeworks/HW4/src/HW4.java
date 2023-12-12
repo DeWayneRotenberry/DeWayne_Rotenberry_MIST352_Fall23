@@ -38,11 +38,19 @@ public class HW4 {
         // 3. Print out the array of csv files again after adding directory to each
         PrintArray(csvFileNames);
 
-        // 4. Go through the array and create Csv2Arff objects
+     // 4. Go through the array and create Csv2Arff objects
         for (String csvFileName : csvFileNames) {
             Csv2Arff csv2Arff = new Csv2Arff(csvFileName);
+
+            // Extract first and last name 
+            String firstName = "DeWayne";
+            String lastName = "Rotenberry";
+
+            // Construct the ARFF file name based on the specified format
+            String arffFileName = firstName + "_" + lastName + "_" + new File(csvFileName).getName().replace(".csv", ".arff");
+
             // 5. Call the proper method to write the arff file for the current csv file in the loop.
-            csv2Arff.Convert2Arff(csvFileName);
+            csv2Arff.Convert2Arff(arffFileName);
         }
 
         // 6. Ask the user for the name of a file to look in, then column number, and row number.
