@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FilenameFilter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 /**
  * 
  */
@@ -26,25 +27,49 @@ public class HW4 {
         String[] csvFileNames = findCSVFileNames(new File(directoryPath));
     //***********************************************************************************************
         //to do:
-        	// 1. print out the array of csv files
-        	// 2. access the array csvFileNames add the directory to each file name. So, the file Ant1.csv should become src/Data/Ant1.csv       	
-        	// 3. print out the array of csv files again after adding directory to each
-        	// 4. Go through the array again (using while / for loop), every time you access a cell, create an object of type Csv2Arff.
-        	// 5. Call the proper method to write the arff file for the current csv file in the loop.
-        	// 6. Ask use for name of a file to look in, and then column number and row number.
-        		// 6.1 Printout the value from that file.
-               
+        // 1. Print out the array of csv files
+        PrintArray(csvFileNames);
+
+        // 2. Access the array csvFileNames, add the directory to each file name.
+        for (int i = 0; i < csvFileNames.length; i++) {
+            csvFileNames[i] = directoryPath + "/" + csvFileNames[i];
+        }
+
+        // 3. Print out the array of csv files again after adding directory to each
+        PrintArray(csvFileNames);
+
+        // 4. Go through the array and create Csv2Arff objects
+        for (String csvFileName : csvFileNames) {
+            Csv2Arff csv2Arff = new Csv2Arff(csvFileName);
+            // 5. Call the proper method to write the arff file for the current csv file in the loop.
+            csv2Arff.Convert2Arff(csvFileName);
+        }
+
+        // 6. Ask the user for the name of a file to look in, then column number, and row number.
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter the name of the file to look in: ");
+        String fileNameToLookIn = scanner.nextLine();
+
+        // 6.1 Printout the value from that file.
+        Csv2Arff csv2Arff = new Csv2Arff(fileNameToLookIn);
+        System.out.println("Enter the column number: ");
+        int columnNumber = scanner.nextInt();
+        System.out.println("Enter the row number: ");
+        int rowNumber = scanner.nextInt();
+        System.out.println("Value at specified column and row: " + Csv2Arff.RetrieveCell(fileNameToLookIn, rowNumber, columnNumber));
     }
-	/**
-	 *  You need to code this
-	 *  This method simply prints out the content of any given String array
-	 * @param array: The array to print
-	 */
-	public static void PrintArray(String[] array)
-	{
-	
-	
-	}
+
+    /**
+     * You need to code this
+     * This method simply prints out the content of any given String array
+     *
+     * @param array: The array to print
+     */
+    public static void PrintArray(String[] array) {
+        for (String element : array) {
+            System.out.println(element);
+        }
+    }
 
 	/**
 	 * Keep as is.
