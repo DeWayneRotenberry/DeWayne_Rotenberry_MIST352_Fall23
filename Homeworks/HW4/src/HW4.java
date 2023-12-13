@@ -1,13 +1,7 @@
-import java.io.File;
-import java.io.IOException;
-import java.io.File;
-import java.io.FilenameFilter;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-/**
- * 
- */
 
 /**
  * @author DeWayne Rotenberry
@@ -16,18 +10,15 @@ import java.util.Scanner;
  */
 public class HW4 {
 
-	/**
-	 * @param args
-	 */
-	public static void main(String[] args) {
-	//***********************************************************************************************
-		// Keep lines 21 - 27 as is
-        //Location of the data folder which has all csv files
-		String directoryPath = "src/Data"; 
-		//String that has the names of all csv files, without the directory.
+    public static void main(String[] args) {
+        //***********************************************************************************************
+        // Keep lines 21 - 27 as is
+        // Location of the data folder which has all csv files
+        String directoryPath = "src/Data";
+        // String that has the names of all csv files, without the directory.
         String[] csvFileNames = findCSVFileNames(new File(directoryPath));
-    //***********************************************************************************************
-        //to do:
+        //***********************************************************************************************
+
         // 1. Print out the array of csv files
         PrintArray(csvFileNames);
 
@@ -39,7 +30,7 @@ public class HW4 {
         // 3. Print out the array of csv files again after adding directory to each
         PrintArray(csvFileNames);
 
-     // 4. Go through the array and create Csv2Arff objects
+        // 4. Go through the array and create Csv2Arff objects
         for (String csvFileName : csvFileNames) {
             Csv2Arff csv2Arff = new Csv2Arff(csvFileName);
 
@@ -66,10 +57,14 @@ public class HW4 {
         System.out.println("Enter the row number: ");
         int rowNumber = scanner.nextInt();
         System.out.println("Value at specified column and row: " + Csv2Arff.RetrieveCell(fileNameToLookIn, rowNumber, columnNumber));
+    
+
+        // Call RetrieveCell method and display the value
+        String cellValue = csv2Arff.RetrieveCell(fileNameToLookIn, rowNumber, columnNumber);
+        System.out.println("Value at specified column and row: " + cellValue);
     }
 
     /**
-     * You need to code this
      * This method simply prints out the content of any given String array
      *
      * @param array: The array to print
@@ -80,21 +75,21 @@ public class HW4 {
         }
     }
 
-	/**
-	 * Keep as is.
-	 * This method finds all csv files in a given directory
-	 * @param directory: location of all csv files. This is passed from the main
-	 * @return: Array of strings, each strring represents the name the location of a csv file
-	 */
+    /**
+     * This method finds all CSV files in a given directory
+     *
+     * @param directory: location of all CSV files. This is passed from the main
+     * @return: Array of strings, each string represents the name and location of a CSV file
+     */
     private static String[] findCSVFileNames(File directory) {
         List<String> csvFileNames = new ArrayList<>();
         addCSVFileNames(directory, csvFileNames);
-        return csvFileNames.toArray((new String[0]));
+        return csvFileNames.toArray(new String[0]);
     }
 
     /**
-     * Keep as is.
      * This method is magical. We Do not care what it does.
+     *
      * @param directory
      * @param csvFileNames
      */
@@ -121,9 +116,5 @@ public class HW4 {
                 }
             }
         }
-    }}
-
-
-	
-
-
+    }
+}
