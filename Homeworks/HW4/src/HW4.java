@@ -10,8 +10,9 @@ import java.util.Scanner;
  */
 
 /**
- * @author MJ
- *
+ * @author DeWayne Rotenberry
+ * 			MIST352
+ *			HW4
  */
 public class HW4 {
 
