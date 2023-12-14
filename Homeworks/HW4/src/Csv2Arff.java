@@ -38,7 +38,7 @@ public class Csv2Arff {
         try (BufferedReader br = new BufferedReader(new FileReader(theLocation));
              FileWriter fw = new FileWriter(theLocation.replace(".csv", ".arff"))) {
 
-            // Write ARFF header
+            // Writes ARFF header
             fw.write("@relation CSVtoARFF\n\n");
 
             // Read the CSV file and write ARFF attributes
