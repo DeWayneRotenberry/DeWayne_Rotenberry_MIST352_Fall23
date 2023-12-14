@@ -46,7 +46,7 @@ public class Csv2Arff {
             while ((line = br.readLine()) != null) {
                 String[] values = line.split(",");
 
-                // Assuming the first row contains attribute names
+                //  first row contains attribute names
                 if (line.startsWith("#") || line.trim().isEmpty()) {
                     continue; // Skip comments and empty lines
                 }
